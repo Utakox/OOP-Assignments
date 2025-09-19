@@ -1,7 +1,11 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+
+    public List<Animal> animals;
+
     void Start()
     {
         // create objects

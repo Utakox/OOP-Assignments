@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Cow
+public class Cow : Animal
 {
     private string name;
     private int hunger;
@@ -14,7 +14,7 @@ public class Cow
     public int Milk { get => milk; private set => milk = value; }
 
     // Constructor
-    public Cow(string name, int hunger, int happiness, int milk)
+    public virtual void Init(string newName, int newHunger, int newHappiness)
     {
         Name = name;
         Hunger = hunger;

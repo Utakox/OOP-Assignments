@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Chicken
+public class Chicken : Animal
 {
     private string name;
     private int hunger;
