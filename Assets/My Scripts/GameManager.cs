@@ -1,39 +1,33 @@
-using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
-
 public class GameManager : MonoBehaviour
 {
+    private List<Animal> animals = new List<Animal>();
 
-    public List<Animal> animals;
-
-    void Start()
+    public void InitGame()
     {
-        // create objects
-        Chicken chicken = new Chicken("KFC", 50, 50, 0); // <-- แก้นี้
-        Cow cow = new Cow("MooMoo", 50, 50, 0); // <-- แก้นี้
+        // สร้างสัตว์ตามโจทย์
+        Chicken chicken = new Chicken();
+        chicken.Init("KFC", 50, 60);
 
-        // แสดงค่าเริ่มต้น
-        chicken.GetStatus();
-        cow.GetStatus();
+        Cow cow = new Cow();
+        cow.Init("Tangmo", 40, 70);
 
-        // เริ่มเกม
-        Debug.Log("---- Gameplay Start ----");
+        NewFarmAnimal newAnimal = new NewFarmAnimal();
+        newAnimal.Init("Mystery", 30, 80);
 
-        chicken.MakeSound();
-        chicken.Feed("Corn");
-        chicken.Sleep();
-        chicken.AdjustHunger(15);
-        chicken.AdjustHappiness(-5);
+        animals.Add(chicken);
+        animals.Add(cow);
+        animals.Add(newAnimal);
+    }
 
-        cow.MakeSound();
-        cow.Feed("Grass");
-        cow.Sleep();
-        cow.AdjustHunger(-20);
-        cow.AdjustHappiness(10);
-
-        // แสดงค่าหลัง start
-        Debug.Log("---- After Actions ----");
-        chicken.GetStatus();
-        cow.GetStatus();
+    public void RunGame()
+    {
+        foreach (Animal animal in animals) // 👈 ตรงนี้ใช้ foreach
+        {
+            animal.MakeSound();
+            animal.Feed("special food", 20);
+            animal.GetStatus();
+        }
     }
 }
