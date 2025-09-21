@@ -1,10 +1,11 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Animal
+public abstract class Animal : MonoBehaviour
 {
     // ===== Fields =====
-    private string name;
+    private new string name;
     private int hunger;
     private int happiness;
 
@@ -30,9 +31,9 @@ public abstract class Animal
     // ===== Methods =====
     public void Init(string name, int hunger, int happiness)
     {
-        this.Name = name;
-        this.Hunger = hunger;
-        this.Happiness = happiness;
+        Name = name;
+        Hunger = hunger;
+        Happiness = happiness;
     }
 
     public void AdjustHunger(int amount)
@@ -45,7 +46,11 @@ public abstract class Animal
         Happiness += amount;
     }
 
-    public abstract void MakeSound();
+    public virtual void MakeSound()
+    {
+        Debug.Log($"เสียงลึกลับ");
+    }
+
 
     // Overload Feed
     public void Feed(int food)
@@ -61,7 +66,7 @@ public abstract class Animal
         AdjustHappiness(+10);
     }
 
-    public void GetStatus()
+    public virtual void GetStatus()
     {
         Debug.Log($"{Name} | Hunger: {Hunger} | Happiness: {Happiness}");
     }

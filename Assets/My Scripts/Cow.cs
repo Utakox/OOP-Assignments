@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+
+
 public class Cow : Animal
 {
     private float milk;
@@ -13,11 +15,6 @@ public class Cow : Animal
 
     public override void MakeSound()
     {
-        Moo();
-    }
-
-    public void Moo()
-    {
-        Debug.Log($"{Name} says: Moo");
+        Debug.Log($"{Name} says Moo!");
     }
 }
