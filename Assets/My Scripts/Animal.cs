@@ -29,7 +29,7 @@ public abstract class Animal : MonoBehaviour
     }
 
     // ===== Methods =====
-    public void Init(string name, int hunger, int happiness)
+    public virtual void Init(string name, int hunger, int happiness)
     {
         Name = name;
         Hunger = hunger;
