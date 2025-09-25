@@ -19,13 +19,13 @@ public abstract class Animal : MonoBehaviour
     public int Hunger
     {
         get { return hunger; }
-        private set { hunger = Mathf.Clamp(value, 0, 100); }
+        private set { hunger = Mathf.Clamp(value, 0, 50); }
     }
 
     public int Happiness
     {
         get { return happiness; }
-        private set { happiness = Mathf.Clamp(value, 0, 100); }
+        private set { happiness = Mathf.Clamp(value, 0, 50); }
     }
 
     // ===== Methods =====
@@ -46,10 +46,9 @@ public abstract class Animal : MonoBehaviour
         Happiness += amount;
     }
 
-    public virtual void MakeSound()
-    {
-        Debug.Log($"เสียงลึกลับ");
-    }
+    public abstract void MakeSound();
+
+    public abstract void Produce();
 
 
     // Overload Feed

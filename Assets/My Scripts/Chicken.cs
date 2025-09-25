@@ -1,6 +1,6 @@
 
 using System;
-using UnityEngine;  
+using UnityEngine;
 
 public class Chicken : Animal
 {
@@ -22,4 +22,11 @@ public class Chicken : Animal
         AdjustHunger(+5);
         AdjustHappiness(+10);
     }
+
+    public override void Produce()
+    {
+        throw new NotImplementedException();
+    }
+    
+        
 }
