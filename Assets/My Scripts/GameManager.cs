@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         InitGame();
-        RunGame();
     }
 
     public void InitGame()
@@ -28,33 +27,60 @@ public class GameManager : MonoBehaviour
         Cat cat = Instantiate(catPrefab);
 
         // สร้างสัตว์แต่ละตัว
-        chicken.Init("KFC", 50, 60);
-
-
-        cow.Init("Tangmo", 40, 70);
-
-        cat.Init("Cat", 30, 80);
 
 
         // เก็บใน List
         animals.Add(chicken);
         animals.Add(cow);
         animals.Add(cat);
-        
-        Debug.Log($"There are {animals.Count} animals in the farm.");
-    }
 
-    public void RunGame()
-    {
-        // ใช้ foreach loop
+        chicken.Init("KFC");
+
+        cow.Init("Tangmo");
+
+        cat.Init("Cat");
+
+        Debug.Log($"There are {animals.Count} animals in the farm.");
+
         foreach (Animal animal in animals)
         {
-            animal.MakeSound();
-            animal.Feed("Dead Spider", 20);
+            animal.GetStatus();
         }
+
+        Debug.Log("-- Feeding animals --");
+
+        cow.Feed(FoodType.Hay, 1);
+        chicken.Feed(FoodType.Grain, 1);
+        cat.Feed(FoodType.Meat, 1);
+
+        cow.Feed(FoodType.RottenFood, 1);
+
+        cow.Produce();
+        cow.Feed(FoodType.Hay, 1);
+        cow.Feed(FoodType.Hay, 1);
+        cow.Produce();
+
+        chicken.Produce();
+        chicken.Feed(FoodType.Grain, 1);
+        chicken.Feed(FoodType.AnimalFood, 1);
+        chicken.Feed(FoodType.Grain, 1);
+        chicken.Produce();
+        chicken.Feed(FoodType.RottenFood, 1);
+
+        cat.Feed(FoodType.Meat, 1);
+        cat.Feed(FoodType.Meat, 1);
+        cat.Produce();
+        cat.Feed(FoodType.RottenFood, 1);
+        cat.Feed(FoodType.RottenFood, 1);
+        cat.Produce();
+
+
+
         foreach (Animal animal in animals)
         {
             animal.GetStatus();
         }
     }
+        
+
 }
